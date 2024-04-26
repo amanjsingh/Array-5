@@ -7,7 +7,8 @@ public class CalculateTax {
             int prevBracketEnd = 0;
             double totalTax = 0;
             double outstanding = income;
-            for (int[] currBracket : brackets) {
+            for (int i = 0; i < brackets.length && outstanding > 0; i++) {
+                int[] currBracket = brackets[i];
                 double taxable = Math.min(currBracket[0] - prevBracketEnd, outstanding);
                 double currTax = taxable * currBracket[1] / 100;
                 totalTax += currTax;
